@@ -22,10 +22,8 @@ class BmiCalculator : AppCompatActivity() {
             // 이 아래로는 빈값이 올 수 없음
             val height: Int = (height_edit_text.text.toString()).toInt()
             val weight: Int = (weight_edit_text.text.toString()).toInt()
-            val result = (height * height) / weight
 
             val intent = Intent(this, ResultBmi::class.java)
-            intent.putExtra("resultBmi", result)
             intent.putExtra("height", height)
             intent.putExtra("weight", weight)
             startActivity(intent)
