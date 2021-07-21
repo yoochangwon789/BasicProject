@@ -24,9 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:textColor="#ffffff"
         android:hint="신장을 입력해 주세요."
         android:inputType="number"
+        android:textColor="#ffffff"
         android:textColorHint="#ffffff" />
 
     <TextView
@@ -43,11 +43,11 @@
         android:id="@+id/weight_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:hint="체중을 입력해 주세요."
         android:inputType="number"
+        android:textColor="#ffffff"
         android:textColorHint="#ffffff" />
 
     <Button
