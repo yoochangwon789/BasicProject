@@ -1,5 +1,6 @@
 package com.yoochangwonspro.basicproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -21,7 +22,11 @@ class BmiCalculator : AppCompatActivity() {
             // 이 아래로는 빈값이 올 수 없음
             val height: Int = (height_edit_text.text.toString()).toInt()
             val weight: Int = (weight_edit_text.text.toString()).toInt()
+            val result = (height * height) / weight
 
+            val intent = Intent(this, ResultBmi::class.java)
+            intent.putExtra("resultBmi", result)
+            startActivity(intent)
         }
     }
 }
