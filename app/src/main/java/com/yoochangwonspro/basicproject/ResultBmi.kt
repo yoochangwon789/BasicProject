@@ -3,6 +3,7 @@ package com.yoochangwonspro.basicproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import kotlinx.android.synthetic.main.activity_result_bmi.*
 import kotlin.math.pow
 
 class ResultBmi : AppCompatActivity() {
@@ -24,5 +25,8 @@ class ResultBmi : AppCompatActivity() {
             bmi >= 18.5 -> "정상 체중"
             else -> "저체중"
         }
+
+        result_bmi.text = bmi.toString()
+        result_weight.text = resultText
     }
 }
