@@ -26,6 +26,8 @@ class BmiCalculator : AppCompatActivity() {
 
             val intent = Intent(this, ResultBmi::class.java)
             intent.putExtra("resultBmi", result)
+            intent.putExtra("height", height)
+            intent.putExtra("weight", weight)
             startActivity(intent)
         }
     }
