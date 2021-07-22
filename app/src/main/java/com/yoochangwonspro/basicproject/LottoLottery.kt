@@ -58,13 +58,7 @@ class LottoLottery : AppCompatActivity() {
             textView.isVisible = true
             textView.text = number_piker.value.toString()
 
-            when (number_piker.value) {
-                in 1..10 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_yello)
-                in 11..20 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_blue)
-                in 21..30 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_red)
-                in 31..40 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_gray)
-                else -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_green)
-            }
+            setNumberBackground(number_piker.value, textView)
 
             pickNumberSet.add(number_piker.value)
 
@@ -83,16 +77,18 @@ class LottoLottery : AppCompatActivity() {
                 textView.text = number.toString()
                 textView.isVisible = true
 
-                when (number) {
-                    in 1..10 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_yello)
-                    in 11..20 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_blue)
-                    in 21..30 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_red)
-                    in 31..40 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_gray)
-                    else -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_green)
-                }
+                setNumberBackground(number, textView)
             }
+        }
+    }
 
-            Log.d("MainActivity", list.toString())
+    private fun setNumberBackground(number: Int, textView: TextView) {
+        when (number) {
+            in 1..10 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_yello)
+            in 11..20 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_blue)
+            in 21..30 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_red)
+            in 31..40 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_gray)
+            else -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_green)
         }
     }
 
