@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_lotto_lottery.*
 
@@ -57,7 +58,16 @@ class LottoLottery : AppCompatActivity() {
             textView.isVisible = true
             textView.text = number_piker.value.toString()
 
+            when (number_piker.value) {
+                in 1..10 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_yello)
+                in 11..20 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_blue)
+                in 21..30 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_red)
+                in 31..40 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_gray)
+                else -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_green)
+            }
+
             pickNumberSet.add(number_piker.value)
+
         }
     }
 
@@ -72,6 +82,14 @@ class LottoLottery : AppCompatActivity() {
 
                 textView.text = number.toString()
                 textView.isVisible = true
+
+                when (number) {
+                    in 1..10 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_yello)
+                    in 11..20 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_blue)
+                    in 21..30 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_red)
+                    in 31..40 -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_gray)
+                    else -> textView.background = ContextCompat.getDrawable(this, R.drawable.circle_green)
+                }
             }
 
             Log.d("MainActivity", list.toString())
