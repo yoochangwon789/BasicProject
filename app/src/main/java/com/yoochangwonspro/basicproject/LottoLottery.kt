@@ -3,13 +3,25 @@ package com.yoochangwonspro.basicproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_lotto_lottery.*
 
 class LottoLottery : AppCompatActivity() {
 
     private var didRun = false
     private val pickNumberSet = hashSetOf<Int>()
+    private val numberTestViewList: List<TextView> by lazy {
+        listOf(
+            one_number,
+            two_number,
+            three_number,
+            four_number,
+            five_number,
+            six_number
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +51,12 @@ class LottoLottery : AppCompatActivity() {
                 Toast.makeText(this, "이미 선택한 번호 입니다.", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
+
+            val textView = numberTestViewList[pickNumberSet.size]
+            textView.isVisible = true
+            textView.text = number_piker.value.toString()
+
+            pickNumberSet.add(number_piker.value)
         }
     }
 
