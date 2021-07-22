@@ -50,66 +50,84 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:background="@drawable/circle_blue"
+            android:gravity="center"
             android:text="1"
-            android:visibility="gone"
-            tools:visibility="visible"
+            android:textColor="#ffffff"
             android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/two_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:gravity="center"
+            android:background="@drawable/circle_gray"
             android:text="1"
-            android:visibility="gone"
-            tools:visibility="visible"
+            android:textColor="#ffffff"
             android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <TextView
+            android:background="@drawable/circle_green"
             android:id="@+id/three_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:gravity="center"
             android:text="1"
-            android:visibility="gone"
-            tools:visibility="visible"
+            android:textColor="#ffffff"
             android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <TextView
+            android:background="@drawable/circle_red"
             android:id="@+id/four_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:gravity="center"
             android:text="1"
-            android:visibility="gone"
-            tools:visibility="visible"
+            android:textColor="#ffffff"
             android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <TextView
+            android:background="@drawable/circle_yello"
             android:id="@+id/five_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:gravity="center"
             android:text="1"
-            android:visibility="gone"
-            tools:visibility="visible"
+            android:textColor="#ffffff"
             android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <TextView
+            android:background="@drawable/circle_red"
             android:id="@+id/six_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:gravity="center"
             android:text="1"
-            android:visibility="gone"
-            tools:visibility="visible"
+            android:textColor="#ffffff"
             android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
     </LinearLayout>
 
