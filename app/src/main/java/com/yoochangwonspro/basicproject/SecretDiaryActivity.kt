@@ -1,6 +1,7 @@
 package com.yoochangwonspro.basicproject
 
 import android.content.Context
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.NumberPicker
@@ -42,7 +43,7 @@ class SecretDiaryActivity : AppCompatActivity() {
         findViewById<AppCompatButton>(R.id.change_password_btn)
     }
 
-    private val changePasswordMode = false
+    private var changePasswordMode = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +79,28 @@ class SecretDiaryActivity : AppCompatActivity() {
         }
 
         changePasswordButton.setOnClickListener {
+            if (changePasswordMode) {
+                // 번호를 저장하는 기능
+            } else {
+                // changePasswordMode 가 활성화 :: 비밀번호가 맞는지를 체크
+                val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE)
+                val passwordFromUser = "${numberPicker1.value}${numberPicker2.value}${numberPicker3.value}"
 
+                if (passwordPreferences.getString("password", "000").equals(passwordFromUser)) {
+                    changePasswordMode = true
+                    Toast.makeText(this, "변경할 패스워드를 입력해주세요", Toast.LENGTH_LONG).show()
+
+                    changePasswordButton.setBackgroundColor(Color.RED)
+                } else {
+                    // 실패 창 띄우는 기능 AlertDialog
+                    AlertDialog.Builder(this)
+                        .setTitle("실패!!")
+                        .setMessage("비밀번호가 잘되었습니다.")
+                        .setPositiveButton("확인") { _,_ -> }
+                        .create()
+                        .show()
+                }
+            }
         }
     }
 }
