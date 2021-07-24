@@ -41,6 +41,8 @@ class SecretDiaryActivity : AppCompatActivity() {
         findViewById<AppCompatButton>(R.id.change_password_btn)
     }
 
+    private val changePasswordMode = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_secret_diary)
@@ -67,6 +69,10 @@ class SecretDiaryActivity : AppCompatActivity() {
                     .create()
                     .show()
             }
+        }
+
+        changePasswordButton.setOnClickListener {
+            if (changePasswordMode)
         }
     }
 }
