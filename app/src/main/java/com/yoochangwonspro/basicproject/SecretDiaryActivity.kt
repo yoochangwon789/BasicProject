@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.NumberPicker
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 
@@ -52,6 +53,11 @@ class SecretDiaryActivity : AppCompatActivity() {
         numberPicker3
 
         openButton.setOnClickListener {
+            if (changePasswordMode) {
+                Toast.makeText(this, "비밀번호 변경중 입니다.", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE)
             val passwordFromUser = "${numberPicker1.value}${numberPicker2.value}${numberPicker3.value}"
 
@@ -72,7 +78,7 @@ class SecretDiaryActivity : AppCompatActivity() {
         }
 
         changePasswordButton.setOnClickListener {
-            if (changePasswordMode)
+
         }
     }
 }
