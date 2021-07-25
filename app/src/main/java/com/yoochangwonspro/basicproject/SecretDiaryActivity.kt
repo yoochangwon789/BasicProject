@@ -70,12 +70,7 @@ class SecretDiaryActivity : AppCompatActivity() {
                 // startActivity()
             } else {
                 // 실패 창 띄우는 기능 AlertDialog
-                AlertDialog.Builder(this)
-                    .setTitle("실패!!")
-                    .setMessage("비밀번호가 잘되었습니다.")
-                    .setPositiveButton("확인") { _,_ -> }
-                    .create()
-                    .show()
+                showErrorAlertDialog()
             }
         }
 
@@ -100,14 +95,18 @@ class SecretDiaryActivity : AppCompatActivity() {
                     changePasswordButton.setBackgroundColor(Color.RED)
                 } else {
                     // 실패 창 띄우는 기능 AlertDialog
-                    AlertDialog.Builder(this)
-                        .setTitle("실패!!")
-                        .setMessage("비밀번호가 잘되었습니다.")
-                        .setPositiveButton("확인") { _,_ -> }
-                        .create()
-                        .show()
+                    showErrorAlertDialog()
                 }
             }
         }
+    }
+
+    private fun c() {
+        AlertDialog.Builder(this)
+            .setTitle("실패!!")
+            .setMessage("비밀번호가 잘되었습니다.")
+            .setPositiveButton("확인") { _,_ -> }
+            .create()
+            .show()
     }
 }
