@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BasicProject">
-        <activity android:name=".DiaryActivity"></activity>
+        <activity android:name=".DiaryActivity"
+            android:theme="@style/Theme.BasicProject.NoActionBar">
+
+        </activity>
         <activity
             android:name=".SecretDiaryActivity"
             android:theme="@style/Theme.BasicProject.NoActionBar">
