@@ -35,7 +35,10 @@ class DiaryActivity : AppCompatActivity() {
         //  text 가 변경 될 때 마다 이 함수가 호출
         // 변경 될때마다 저장시킬 수 있도록 한다
         diaryEditText.addTextChangedListener {
-            
+            // 뷰에서 사용하는 Handler 함수를 통해 구현 -> post, postDelayer 함수 사용
+            // removeCallbacks 를 사용해 설정된 0.5초 이전에 보류된 runnable 이 있다면 지우고 다시 실행
+            handler.removeCallbacks(runnable)
+            handler.postDelayed(runnable, 500)
         }
     }
 }
