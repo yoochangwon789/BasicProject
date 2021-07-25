@@ -8,6 +8,7 @@ import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.edit
 
 class SecretDiaryActivity : AppCompatActivity() {
 
@@ -81,6 +82,12 @@ class SecretDiaryActivity : AppCompatActivity() {
         changePasswordButton.setOnClickListener {
             if (changePasswordMode) {
                 // 번호를 저장하는 기능
+                val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE)
+
+                passwordPreferences.edit(true) {
+                    val passwordFromUser = "${numberPicker1.value}${numberPicker2.value}${numberPicker3.value}"
+                    putString("password", passwordFromUser)
+                }
             } else {
                 // changePasswordMode 가 활성화 :: 비밀번호가 맞는지를 체크
                 val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE)
