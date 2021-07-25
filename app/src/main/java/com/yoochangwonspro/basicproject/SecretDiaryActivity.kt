@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -84,6 +85,8 @@ class SecretDiaryActivity : AppCompatActivity() {
                 passwordPreferences.edit(true) {
                     putString("password", passwordFromUser)
                 }
+
+                Log.d("password", passwordFromUser)
 
                 changePasswordMode = false
                 changePasswordButton.setBackgroundColor(Color.BLACK)
