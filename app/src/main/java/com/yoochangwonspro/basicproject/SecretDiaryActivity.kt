@@ -80,19 +80,19 @@ class SecretDiaryActivity : AppCompatActivity() {
         }
 
         changePasswordButton.setOnClickListener {
+            val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE)
+            val passwordFromUser = "${numberPicker1.value}${numberPicker2.value}${numberPicker3.value}"
+
             if (changePasswordMode) {
                 // 번호를 저장하는 기능
-                val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE)
-
                 passwordPreferences.edit(true) {
-                    val passwordFromUser = "${numberPicker1.value}${numberPicker2.value}${numberPicker3.value}"
                     putString("password", passwordFromUser)
                 }
+
+                changePasswordMode = false
+                changePasswordButton.setBackgroundColor(Color.BLACK)
             } else {
                 // changePasswordMode 가 활성화 :: 비밀번호가 맞는지를 체크
-                val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE)
-                val passwordFromUser = "${numberPicker1.value}${numberPicker2.value}${numberPicker3.value}"
-
                 if (passwordPreferences.getString("password", "000").equals(passwordFromUser)) {
                     changePasswordMode = true
                     Toast.makeText(this, "변경할 패스워드를 입력해주세요", Toast.LENGTH_LONG).show()
