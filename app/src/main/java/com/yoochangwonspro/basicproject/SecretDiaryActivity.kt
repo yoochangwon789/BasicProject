@@ -108,7 +108,7 @@ class SecretDiaryActivity : AppCompatActivity() {
     private fun showErrorAlertDialog() {
         AlertDialog.Builder(this)
             .setTitle("실패!!")
-            .setMessage("비밀번호가 잘되었습니다.")
+            .setMessage("비밀번호가 틀렸습니다.")
             .setPositiveButton("확인") { _,_ -> }
             .create()
             .show()
