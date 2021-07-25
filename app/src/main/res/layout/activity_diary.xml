@@ -9,6 +9,7 @@
     android:background="#AF92E1">
 
     <EditText
+        android:id="@+id/diary_edit_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#ffffff"
