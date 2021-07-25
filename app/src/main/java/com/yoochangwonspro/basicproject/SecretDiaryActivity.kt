@@ -66,9 +66,9 @@ class SecretDiaryActivity : AppCompatActivity() {
 
             if (passwordPreferences.getString("password", "000").equals(passwordFromUser)) {
                 // 패스워드 일치
-//                startActivity(
-//                    Intent(this, DiaryActivity::class.java)
-//                )
+                startActivity(
+                    Intent(this, DiaryActivity::class.java)
+                )
             } else {
                 // 실패 창 띄우는 기능 AlertDialog
                 showErrorAlertDialog()
