@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.EditText
 import androidx.core.content.edit
 import androidx.core.widget.addTextChangedListener
@@ -30,6 +31,7 @@ class DiaryActivity : AppCompatActivity() {
             getSharedPreferences("diary", Context.MODE_PRIVATE).edit {
                 putString("detail", diaryEditText.text.toString())
             }
+            Log.d("diaryActivity", "save!!! : ${diaryEditText.text.toString()} ")
         }
 
         //  text 가 변경 될 때 마다 이 함수가 호출
@@ -37,6 +39,7 @@ class DiaryActivity : AppCompatActivity() {
         diaryEditText.addTextChangedListener {
             // 뷰에서 사용하는 Handler 함수를 통해 구현 -> post, postDelayer 함수 사용
             // removeCallbacks 를 사용해 설정된 0.5초 이전에 보류된 runnable 이 있다면 지우고 다시 실행
+            Log.d("diaryActivity", "TextChanged : $it")
             handler.removeCallbacks(runnable)
             handler.postDelayed(runnable, 500)
         }
