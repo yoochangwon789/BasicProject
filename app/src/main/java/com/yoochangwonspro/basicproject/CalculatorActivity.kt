@@ -21,14 +21,16 @@ class CalculatorActivity : AppCompatActivity() {
         findViewById(R.id.calculator_result_text_view)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calculator)
-    }
-
     private var isOperator = false
 
     private var hasOperator = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_calculator)
+
+
+    }
 
     fun buttonClicked(v: View) {
         when (v.id) {
@@ -86,9 +88,9 @@ class CalculatorActivity : AppCompatActivity() {
                 val text = expressionTextView.text.toString()
                 expressionTextView.text = text.dropLast(1) + operator
             }
-            // 연산자를 연속에서 2번 누른경우
+            // 연산자를 2개 이상 입력한경우
             hasOperator -> {
-                Toast.makeText(this, "연산자는 연속해서 사용할 수 없습니다.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "연산자는 2개이상 사용할 수 없습니다.", Toast.LENGTH_LONG).show()
                 return
             }
             else -> {

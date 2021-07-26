@@ -20,36 +20,36 @@
         android:id="@+id/expression_text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp"
-        android:textSize="30sp"
+        android:gravity="end"
         android:textColor="@color/black"
-        android:gravity="end" />
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/calculator_result_text_view"
-        app:layout_constraintBottom_toTopOf="@+id/keypad_table_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="end"
-        android:textSize="20sp"
-        android:textColor="#aaaaaa"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp" />
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="end"
+        android:textColor="#aaaaaa"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/keypad_table_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TableLayout
         android:id="@+id/keypad_table_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:shrinkColumns="*"
         android:padding="15dp"
+        android:shrinkColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,20 +64,20 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="clearButtonClicked"
+                android:stateListAnimator="@null"
                 android:text="C"
-                android:textSize="24sp"
-                android:textColor="#EC6868"/>
+                android:textColor="#EC6868"
+                android:textSize="24sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
-                android:enabled="false"
                 android:clickable="false"
+                android:enabled="false"
+                android:stateListAnimator="@null"
                 android:text="()"
                 android:textColor="@color/green"
                 android:textSize="24sp" />
@@ -100,8 +100,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="buttonClicked"
+                android:stateListAnimator="@null"
                 android:text="÷"
                 android:textColor="@color/green"
                 android:textSize="24sp" />
@@ -109,14 +109,15 @@
         </TableRow>
 
         <TableRow android:layout_weight="1">
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/seven_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="buttonClicked"
+                android:stateListAnimator="@null"
                 android:text="7"
                 android:textColor="@color/textColor"
                 android:textSize="24sp" />
@@ -127,6 +128,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
+                android:onClick="buttonClicked"
                 android:stateListAnimator="@null"
                 android:text="8"
                 android:textColor="@color/textColor"
@@ -138,8 +140,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="buttonClicked"
+                android:stateListAnimator="@null"
                 android:text="9"
                 android:textColor="@color/textColor"
                 android:textSize="24sp" />
@@ -150,22 +152,23 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="buttonClicked"
+                android:stateListAnimator="@null"
                 android:text="x"
                 android:textColor="@color/green"
                 android:textSize="24sp" />
         </TableRow>
 
         <TableRow android:layout_weight="1">
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/four_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="buttonClicked"
+                android:stateListAnimator="@null"
                 android:text="4"
                 android:textColor="@color/textColor"
                 android:textSize="24sp" />
@@ -176,6 +179,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
+                android:onClick="buttonClicked"
                 android:stateListAnimator="@null"
                 android:text="5"
                 android:textColor="@color/textColor"
@@ -187,8 +191,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="buttonClicked"
+                android:stateListAnimator="@null"
                 android:text="6"
                 android:textColor="@color/textColor"
                 android:textSize="24sp" />
@@ -199,22 +203,23 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="buttonClicked"
+                android:stateListAnimator="@null"
                 android:text="-"
                 android:textColor="@color/green"
                 android:textSize="24sp" />
         </TableRow>
 
         <TableRow android:layout_weight="1">
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/one_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="buttonClicked"
+                android:stateListAnimator="@null"
                 android:text="1"
                 android:textColor="@color/textColor"
                 android:textSize="24sp" />
@@ -225,6 +230,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
+                android:onClick="buttonClicked"
                 android:stateListAnimator="@null"
                 android:text="2"
                 android:textColor="@color/textColor"
@@ -236,8 +242,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="buttonClicked"
+                android:stateListAnimator="@null"
                 android:text="3"
                 android:textColor="@color/textColor"
                 android:textSize="24sp" />
@@ -248,23 +254,24 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="buttonClicked"
+                android:stateListAnimator="@null"
                 android:text="+"
                 android:textColor="@color/green"
                 android:textSize="24sp" />
         </TableRow>
 
         <TableRow android:layout_weight="1">
+
             <ImageButton
                 android:id="@+id/history_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
                 android:onClick="historyButtonClicked"
                 android:src="@drawable/ic_baseline_access_time_24"
+                android:stateListAnimator="@null"
                 android:textColor="@color/textColor"
                 android:textSize="24sp" />
 
@@ -274,6 +281,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
+                android:onClick="buttonClicked"
                 android:stateListAnimator="@null"
                 android:text="0"
                 android:textColor="@color/textColor"
@@ -284,9 +292,9 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:stateListAnimator="@null"
-                android:enabled="false"
                 android:clickable="false"
+                android:enabled="false"
+                android:stateListAnimator="@null"
                 android:text="."
                 android:textColor="@color/textColor"
                 android:textSize="24sp" />
@@ -297,8 +305,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background_green"
-                android:stateListAnimator="@null"
                 android:onClick="resultButtonClicked"
+                android:stateListAnimator="@null"
                 android:text="="
                 android:textColor="@color/white"
                 android:textSize="24sp" />
