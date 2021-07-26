@@ -137,6 +137,19 @@ class CalculatorActivity : AppCompatActivity() {
         else if (expressionTexts[0].isNumber().not() || expressionTexts[2].isNumber().not()) {
             return ""
         }
+
+        val exp1 = expressionTexts[0].toBigInteger()
+        val exp2 = expressionTexts[2].toBigInteger()
+        val op = expressionTexts[1]
+
+        return when (op) {
+            "+" -> (exp1 + exp2).toString()
+            "-" -> (exp1 - exp2).toString()
+            "*" -> (exp1 * exp2).toString()
+            "/" -> (exp1 / exp2).toString()
+            "%" -> (exp1 % exp2).toString()
+            else -> ""
+        }
     }
 }
 
