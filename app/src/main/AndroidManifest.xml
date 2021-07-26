@@ -9,20 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BasicProject">
-        <activity android:name=".DiaryActivity"
-            android:theme="@style/Theme.BasicProject.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".SecretDiaryActivity"
-            android:theme="@style/Theme.BasicProject.NoActionBar">
+        <activity android:name=".CalculatorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LottoLottery"></activity>
+        <activity
+            android:name=".DiaryActivity"
+            android:theme="@style/Theme.BasicProject.NoActionBar"></activity>
+        <activity
+            android:name=".SecretDiaryActivity"
+            android:theme="@style/Theme.BasicProject.NoActionBar">
+
+        </activity>
+        <activity android:name=".LottoLottery" />
         <activity android:name=".ResultBmi" />
         <activity android:name=".BmiCalculator" />
         <activity android:name=".MainActivity" />
