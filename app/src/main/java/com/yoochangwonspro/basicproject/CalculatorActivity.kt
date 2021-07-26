@@ -94,6 +94,9 @@ class CalculatorActivity : AppCompatActivity() {
                 expressionTextView.append(" $operator")
             }
         }
+
+        // 연산자일 경우에는 Text 에 색깔을 넣어주기 위한 기능 작업
+        val ssp = SpannableStringBuilder(expressionTextView.text)
     }
 
     fun historyButtonClicked(v: View) {
