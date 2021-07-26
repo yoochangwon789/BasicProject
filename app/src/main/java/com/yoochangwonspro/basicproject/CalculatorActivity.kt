@@ -31,6 +31,8 @@ class CalculatorActivity : AppCompatActivity() {
         findViewById<View>(R.id.history_linearlayout)
     }
 
+    lateinit var db: AppDatabase
+
     private var isOperator = false
 
     private var hasOperator = false
