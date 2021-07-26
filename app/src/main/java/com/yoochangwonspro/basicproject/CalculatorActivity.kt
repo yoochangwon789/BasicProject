@@ -23,6 +23,10 @@ class CalculatorActivity : AppCompatActivity() {
         setContentView(R.layout.activity_calculator)
     }
 
+    private var isOperator = false
+
+    private var hasOperator = false
+
     fun buttonClicked(v: View) {
         when (v.id) {
             R.id.zero_btn -> numberButtonClicked("0")
@@ -44,7 +48,15 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     private fun numberButtonClicked(number: String) {
+
+        if (isOperator) {
+            expressionTextView.append(" ")
+        }
+
+        isOperator = false
+
         val expressionText = expressionTextView.text.split(" ")
+
         if (expressionText.isNotEmpty() && expressionText.last().length >= 15) {
             Toast.makeText(this, "15자리 까지만 사용할 수 있습니다.", Toast.LENGTH_LONG).show()
             return
