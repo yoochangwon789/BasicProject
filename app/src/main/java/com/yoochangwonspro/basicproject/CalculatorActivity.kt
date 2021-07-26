@@ -120,6 +120,14 @@ class CalculatorActivity : AppCompatActivity() {
 
     }
 
+    fun closeHistoryButtonClicked(v: View) {
+
+    }
+
+    fun historyClearButtonClicked(v: View) {
+
+    }
+
     fun clearButtonClicked(v: View) {
         expressionTextView.text = ""
         resultTextView.text = ""
