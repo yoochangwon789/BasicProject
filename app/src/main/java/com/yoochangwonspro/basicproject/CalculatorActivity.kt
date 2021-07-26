@@ -23,10 +23,19 @@ class CalculatorActivity : AppCompatActivity() {
             R.id.seven_btn -> numberButtonClicked("7")
             R.id.eight_btn -> numberButtonClicked("8")
             R.id.nine_btn -> numberButtonClicked("9")
+            R.id.plus_btn -> operatorButtonClicked("+")
+            R.id.minus_btn -> operatorButtonClicked("-")
+            R.id.multi_btn -> operatorButtonClicked("*")
+            R.id.divider_btn -> operatorButtonClicked("/")
+            R.id.modulo_btn -> operatorButtonClicked("%")
         }
     }
 
     private fun numberButtonClicked(number: String) {
+
+    }
+
+    private fun operatorButtonClicked(operator: String) {
 
     }
 
