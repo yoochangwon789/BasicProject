@@ -121,7 +121,10 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     fun clearButtonClicked(v: View) {
-
+        expressionTextView.text = ""
+        resultTextView.text = ""
+        isOperator = false
+        hasOperator = false
     }
 
     fun resultButtonClicked(v: View) {
