@@ -155,9 +155,9 @@ class CalculatorActivity : AppCompatActivity() {
                         .from(this)
                         .inflate(R.layout.history_row, null, false)
                     historyView.findViewById<TextView>(R.id.row_expression_text_view)
-                        .text = "계산식 = {$it.expression}"
+                        .text = it.expression
                     historyView.findViewById<TextView>(R.id.row_calculator_result_text_view)
-                        .text = "계산 결과 = {${it.result}}"
+                        .text = "= ${it.result}"
 
                     historyLinearLayout.addView(historyView)
                 }
@@ -170,8 +170,13 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     fun historyClearButtonClicked(v: View) {
-        // TODO : DB 에서 모든 기록 삭제
-        // TODO : 뷰에서 모든 기록 삭제제
+        historyLinearLayout.removeAllViews()
+
+        // DB 에서 모든 기록 삭제
+        // 뷰에서 모든 기록 삭제
+        Thread {
+            db.historyDao().deleteAll()
+        }.start()
     }
     fun clearButtonClicked(v: View) {
         expressionTextView.text = ""
