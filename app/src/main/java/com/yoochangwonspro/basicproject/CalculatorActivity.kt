@@ -49,8 +49,14 @@ class CalculatorActivity : AppCompatActivity() {
             Toast.makeText(this, "15자리 까지만 사용할 수 있습니다.", Toast.LENGTH_LONG).show()
             return
         }
+        else if (expressionText.last().isEmpty() && number == "0") {
+            Toast.makeText(this, "0은 제일 앞에 올 수 없습니다.", Toast.LENGTH_LONG).show()
+            return
+        }
 
         expressionTextView.append(number)
+
+        // TODO : resultTextView 실시간으로 계산 결과를 넣어야 하는 기능
     }
 
     private fun operatorButtonClicked(operator: String) {
