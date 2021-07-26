@@ -22,6 +22,14 @@ class CalculatorActivity : AppCompatActivity() {
         findViewById(R.id.calculator_result_text_view)
     }
 
+    private val history: View by lazy {
+        findViewById<View>(R.id.history_layout)
+    }
+
+    private val historyLinearLayout: View by lazy {
+        findViewById<View>(R.id.history_linearlayout)
+    }
+
     private var isOperator = false
 
     private var hasOperator = false
