@@ -2,7 +2,9 @@ package com.yoochangwonspro.basicproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Spannable
 import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -96,7 +98,17 @@ class CalculatorActivity : AppCompatActivity() {
         }
 
         // 연산자일 경우에는 Text 에 색깔을 넣어주기 위한 기능 작업
-        val ssp = SpannableStringBuilder(expressionTextView.text)
+        val ssb = SpannableStringBuilder(expressionTextView.text)
+        ssb.setSpan(
+            ForegroundColorSpan(getColor(R.color.green)),
+            expressionTextView.text.length - 1,
+            expressionTextView.text.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        expressionTextView.text = ssb
+
+        isOperator = true
+        hasOperator = true
     }
 
     fun historyButtonClicked(v: View) {
