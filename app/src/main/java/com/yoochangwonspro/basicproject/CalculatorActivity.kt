@@ -6,10 +6,12 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.room.Room
+import com.yoochangwonspro.basicproject.model.History
 import kotlinx.android.synthetic.main.activity_calculator.*
 import org.w3c.dom.Text
 import java.lang.NumberFormatException
@@ -28,8 +30,8 @@ class CalculatorActivity : AppCompatActivity() {
         findViewById<View>(R.id.history_layout)
     }
 
-    private val historyLinearLayout: View by lazy {
-        findViewById<View>(R.id.history_linearlayout)
+    private val historyLinearLayout: LinearLayout by lazy {
+        findViewById<LinearLayout>(R.id.history_linearlayout)
     }
 
     lateinit var db: AppDatabase
@@ -42,6 +44,7 @@ class CalculatorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
 
+        // context, 내가사용할 DB, DB 의 이름 설정
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
@@ -134,9 +137,16 @@ class CalculatorActivity : AppCompatActivity() {
 
     fun historyButtonClicked(v: View) {
         historyLayout.isVisible = true
+        // LinearLayout 의 모든 뷰들이 삭제 됨
+        historyLinearLayout.removeAllViews()
 
-        // TODO : DB 에서 모든 기록 가져오기
-        // TODO : 뷰에 모든 기록 할당하기
+        // DB 에서 모든 기록 가져오기
+        // 뷰에 모든 기록 할당하기
+        Thread{
+            db.historyDao().getAll().reversed().forEach {
+
+            }
+        }.start()
     }
 
     fun closeHistoryButtonClicked(v: View) {
@@ -173,6 +183,12 @@ class CalculatorActivity : AppCompatActivity() {
 
         val expressionText = expressionTextView.text.toString()
         val resultText = calculatorExpression()
+
+        // DB 에 넣어주는 부분
+        // MainThread 와 이 Thread 누가 먼저 실행되는 지는 알 수 없어서 text 같은 경우엔 위에서 미리저장해 두는 것이 좋다
+        Thread(Runnable {
+            db.historyDao().insertHistory(History(null, expressionText, resultText))
+        }).start()
 
         resultTextView.text = ""
         expressionTextView.text = resultText
