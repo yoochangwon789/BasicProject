@@ -128,7 +128,21 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     fun resultButtonClicked(v: View) {
+        val expressionTexts = expressionTextView.text.split(" ")
 
+        if (expressionTextView.text.isEmpty() || expressionTexts.size == 1) {
+            return
+        }
+
+        if (expressionTexts.size != 3 && hasOperator) {
+            Toast.makeText(this, "아직 완전되지 않은 수식입니다.", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        if (expressionTexts[0].isNumber().not() || expressionTexts[2].isNumber().not()) {
+            Toast.makeText(this, "오류가 발생했습니다.", Toast.LENGTH_LONG).show()
+            return
+        }
     }
     
     private fun calculatorExpression(): String {
