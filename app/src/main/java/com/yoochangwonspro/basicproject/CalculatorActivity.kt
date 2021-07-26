@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_calculator.*
 import org.w3c.dom.Text
+import java.lang.NumberFormatException
 
 class CalculatorActivity : AppCompatActivity() {
 
@@ -83,7 +84,7 @@ class CalculatorActivity : AppCompatActivity() {
         }
 
         when {
-            // 연산자를 이미 입력했는데 뒤로가기 버튼을 클릭하지 않고 누른경우
+            // 연산자를 이미 입력했는데 다른 연산자를 입력한 경우
             isOperator -> {
                 val text = expressionTextView.text.toString()
                 expressionTextView.text = text.dropLast(1) + operator
@@ -123,5 +124,27 @@ class CalculatorActivity : AppCompatActivity() {
 
     fun resultButtonClicked(v: View) {
 
+    }
+    
+    private fun calculatorExpression(): String {
+        val expressionTexts = expressionTextView.text.split(" ")
+        
+        // not -> 아직 연산자가 없는 경우 와 숫자 연산자 숫자 String size 가 3이상이 아닌 경우
+        if (hasOperator.not() || expressionTexts.size != 3) {
+            return ""
+        }
+        else if (expressionTexts[0].isNumber())
+    }
+}
+
+// 객체. 으로 시작하는 함수는 그 객체의 확장함수를 만들어 주는 것이다
+fun String.isNumber(): Boolean {
+    return try {
+        // toBigInteger 타입으로 정상적으로 치환이 되면 true 반환
+        this.toBigInteger()
+        true
+    } catch (e: NumberFormatException) {
+        // 정상 적으로 변환이 되지 않으면 NumberFormatException 로 처리
+        false
     }
 }
