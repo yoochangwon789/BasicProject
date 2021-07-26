@@ -3,9 +3,20 @@ package com.yoochangwonspro.basicproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_calculator.*
+import org.w3c.dom.Text
 
 class CalculatorActivity : AppCompatActivity() {
+
+    private val expressionTextView: TextView by lazy {
+        findViewById(R.id.expression_text_view)
+    }
+
+    private val resultTextView: TextView by lazy {
+        findViewById(R.id.calculator_result_text_view)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
