@@ -2,6 +2,7 @@ package com.yoochangwonspro.basicproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -73,6 +74,26 @@ class CalculatorActivity : AppCompatActivity() {
 
     private fun operatorButtonClicked(operator: String) {
 
+        if (expressionTextView.text.isEmpty()) {
+            return
+        }
+
+        when {
+            // 연산자를 이미 입력했는데 뒤로가기 버튼을 클릭하지 않고 누른경우
+            isOperator -> {
+                val text = expressionTextView.text.toString()
+                expressionTextView.text = text.dropLast(1) + operator
+            }
+            // 연산자를 연속에서 2번 누른경우
+            hasOperator -> {
+                Toast.makeText(this, "연산자는 연속해서 사용할 수 없습니다.", Toast.LENGTH_LONG).show()
+                return
+            }
+            else -> {
+                // 숫자를 입력하고 연산자를 한번도 입력을 하지 않은 경우
+                expressionTextView.append(" $operator")
+            }
+        }
     }
 
     fun historyButtonClicked(v: View) {
