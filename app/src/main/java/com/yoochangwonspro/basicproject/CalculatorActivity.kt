@@ -74,7 +74,9 @@ class CalculatorActivity : AppCompatActivity() {
 
         expressionTextView.append(number)
 
-        // TODO : resultTextView 실시간으로 계산 결과를 넣어야 하는 기능
+        // resultTextView 실시간으로 계산 결과를 넣어야 하는 기능
+        resultTextView.text = calculatorExpression()
+
     }
 
     private fun operatorButtonClicked(operator: String) {
