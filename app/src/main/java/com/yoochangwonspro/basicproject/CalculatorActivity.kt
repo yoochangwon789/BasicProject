@@ -8,6 +8,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_calculator.*
 import org.w3c.dom.Text
 import java.lang.NumberFormatException
@@ -22,7 +23,7 @@ class CalculatorActivity : AppCompatActivity() {
         findViewById(R.id.calculator_result_text_view)
     }
 
-    private val history: View by lazy {
+    private val historyLayout: View by lazy {
         findViewById<View>(R.id.history_layout)
     }
 
@@ -129,7 +130,7 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     fun closeHistoryButtonClicked(v: View) {
-
+        historyLayout.isVisible = false
     }
 
     fun historyClearButtonClicked(v: View) {
