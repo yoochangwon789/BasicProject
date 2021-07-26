@@ -100,6 +100,7 @@ class CalculatorActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun operatorButtonClicked(operator: String) {
 
         if (expressionTextView.text.isEmpty()) {
