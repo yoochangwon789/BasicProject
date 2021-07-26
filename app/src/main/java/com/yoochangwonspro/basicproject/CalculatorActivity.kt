@@ -143,6 +143,15 @@ class CalculatorActivity : AppCompatActivity() {
             Toast.makeText(this, "오류가 발생했습니다.", Toast.LENGTH_LONG).show()
             return
         }
+
+        val expressionText = expressionTextView.text.toString()
+        val resultText = calculatorExpression()
+
+        resultTextView.text = ""
+        expressionTextView.text = resultText
+
+        isOperator = false
+        hasOperator = false
     }
     
     private fun calculatorExpression(): String {
