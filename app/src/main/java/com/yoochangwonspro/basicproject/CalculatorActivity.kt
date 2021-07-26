@@ -1,10 +1,12 @@
 package com.yoochangwonspro.basicproject
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -135,6 +137,7 @@ class CalculatorActivity : AppCompatActivity() {
         hasOperator = true
     }
 
+    @SuppressLint("SetTextI18n")
     fun historyButtonClicked(v: View) {
         historyLayout.isVisible = true
         // LinearLayout 의 모든 뷰들이 삭제 됨
@@ -145,6 +148,19 @@ class CalculatorActivity : AppCompatActivity() {
         Thread{
             db.historyDao().getAll().reversed().forEach {
 
+                // 메인 쓰레드로 가는 방법
+                // UI 는 메인 쓰레드 에서만 그릴 수 있기 때문
+                runOnUiThread {
+                    val historyView = LayoutInflater
+                        .from(this)
+                        .inflate(R.layout.history_row, null, false)
+                    historyView.findViewById<TextView>(R.id.row_expression_text_view)
+                        .text = "계산식 = {$it.expression}"
+                    historyView.findViewById<TextView>(R.id.row_calculator_result_text_view)
+                        .text = "계산 결과 = {${it.result}}"
+
+                    historyLinearLayout.addView(historyView)
+                }
             }
         }.start()
     }
