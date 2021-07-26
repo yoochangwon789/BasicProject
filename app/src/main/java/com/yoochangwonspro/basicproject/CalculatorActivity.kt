@@ -126,7 +126,10 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     fun historyButtonClicked(v: View) {
+        historyLayout.isVisible = true
 
+        // TODO : DB 에서 모든 기록 가져오기
+        // TODO : 뷰에 모든 기록 할당하기
     }
 
     fun closeHistoryButtonClicked(v: View) {
@@ -134,9 +137,9 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     fun historyClearButtonClicked(v: View) {
-
+        // TODO : DB 에서 모든 기록 삭제
+        // TODO : 뷰에서 모든 기록 삭제제
     }
-
     fun clearButtonClicked(v: View) {
         expressionTextView.text = ""
         resultTextView.text = ""
