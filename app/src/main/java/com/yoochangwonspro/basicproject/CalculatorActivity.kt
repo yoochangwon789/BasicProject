@@ -133,7 +133,10 @@ class CalculatorActivity : AppCompatActivity() {
         if (hasOperator.not() || expressionTexts.size != 3) {
             return ""
         }
-        else if (expressionTexts[0].isNumber())
+        // 연산자를 뺀 앞의 숫자와 뒤의 숫자가 정수가 아니면 이 조건을 실행
+        else if (expressionTexts[0].isNumber().not() || expressionTexts[2].isNumber().not()) {
+            return ""
+        }
     }
 }
 
