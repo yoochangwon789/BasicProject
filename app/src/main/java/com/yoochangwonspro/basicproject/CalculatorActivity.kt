@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_calculator.*
 import org.w3c.dom.Text
 
@@ -43,7 +44,13 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     private fun numberButtonClicked(number: String) {
+        val expressionText = expressionTextView.text.split(" ")
+        if (expressionText.isNotEmpty() && expressionText.last().length >= 15) {
+            Toast.makeText(this, "15자리 까지만 사용할 수 있습니다.", Toast.LENGTH_LONG).show()
+            return
+        }
 
+        expressionTextView.append(number)
     }
 
     private fun operatorButtonClicked(operator: String) {
