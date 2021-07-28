@@ -4,6 +4,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 
 class ElectronicPictureFrame : AppCompatActivity() {
@@ -41,14 +42,25 @@ class ElectronicPictureFrame : AppCompatActivity() {
                 }
                 else -> {
                     // 위의 조건이 걸리지 않은 경우 앱을 처음 실행시켰을 때? 바로 권한 요청 팝업을 띄워준다
-                    requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1000)
+                    requestPermissions(
+                        arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                        1000
+                    )
                 }
             }
         }
     }
 
     private fun showPermissionContextPopup() {
-        TODO("Not yet implemented")
+        AlertDialog.Builder(this)
+            .setTitle("권한이 필요합니다.")
+            .setMessage("전자 액자 앱애서 사진을 불러오기 위해 권한이 필요합니다.")
+            .setPositiveButton("동의하기") { _, _ ->
+                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1000)
+            }
+            .setNegativeButton("취소하기") { _, _ -> }
+            .create()
+            .show()
     }
 
     private fun initStartPhotoFrameModeButton() {
