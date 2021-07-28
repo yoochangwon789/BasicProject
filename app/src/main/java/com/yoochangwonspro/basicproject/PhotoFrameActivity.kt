@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import java.util.*
 import kotlin.concurrent.timer
 
 class PhotoFrameActivity : AppCompatActivity() {
@@ -12,6 +13,8 @@ class PhotoFrameActivity : AppCompatActivity() {
     private val photoList = mutableListOf<Uri>()
 
     private var currentPosition = 0
+
+    private var timer: Timer? = null
 
     private val photoImageView: ImageView by lazy {
         findViewById(R.id.photo_frame_image_view)
