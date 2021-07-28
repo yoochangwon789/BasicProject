@@ -12,6 +12,10 @@ class PhotoFrameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo_frame)
 
+        getPhotoUriFromIntent()
+    }
+
+    private fun getPhotoUriFromIntent() {
         val size = intent.getIntExtra("photoListSize", 0)
         for (i in 0..size) {
             intent.getStringExtra("photo$i")?.let {
