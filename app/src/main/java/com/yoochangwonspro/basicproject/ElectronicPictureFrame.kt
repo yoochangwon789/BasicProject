@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -75,8 +76,10 @@ class ElectronicPictureFrame : AppCompatActivity() {
             val intent = Intent(this, PhotoFrameActivity::class.java)
             imageUriList.forEachIndexed { index, uri ->
                 intent.putExtra("photo$index", uri.toString())
+                Log.d("photoListIndex", "photo : $index")
             }
             intent.putExtra("photoListSize", imageUriList.size)
+            Log.d("photoListSize", "${imageUriList.size}")
             startActivity(intent)
         }
     }
