@@ -14,8 +14,6 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.room.Room
 import com.yoochangwonspro.basicproject.model.History
-import kotlinx.android.synthetic.main.activity_calculator.*
-import org.w3c.dom.Text
 import java.lang.NumberFormatException
 
 class CalculatorActivity : AppCompatActivity() {
