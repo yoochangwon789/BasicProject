@@ -1,5 +1,6 @@
 package com.yoochangwonspro.basicproject
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -89,7 +90,9 @@ class ElectronicPictureFrame : AppCompatActivity() {
     }
 
     private fun navigatePhotos() {
-
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        startActivityForResult(intent, 2000)
     }
 
     private fun showPermissionContextPopup() {
