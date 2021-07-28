@@ -47,6 +47,7 @@ class ElectronicPictureFrame : AppCompatActivity() {
                 ) == PackageManager.PERMISSION_GRANTED
                 -> {
                     // 권한이 잘 부여되었을 때 갤러리에서 사진을 선택하는 기능
+                    navigatePhotos()
                 }
                 shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                 -> {
@@ -75,6 +76,7 @@ class ElectronicPictureFrame : AppCompatActivity() {
             1000 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 권한이 부여가 되었을 경우
+                    navigatePhotos()
                 }
                 else {
                     Toast.makeText(this, "권한을 거부하였습니다.", Toast.LENGTH_SHORT).show()
@@ -84,6 +86,10 @@ class ElectronicPictureFrame : AppCompatActivity() {
                 //
             }
         }
+    }
+
+    private fun navigatePhotos() {
+
     }
 
     private fun showPermissionContextPopup() {
