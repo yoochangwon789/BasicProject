@@ -70,6 +70,17 @@ class ElectronicPictureFrame : AppCompatActivity() {
         }
     }
 
+    private fun initStartPhotoFrameModeButton() {
+        startPhotoFrameModeButton.setOnClickListener {
+            val intent = Intent(this, PhotoFrameActivity::class.java)
+            imageUriList.forEachIndexed { index, uri ->
+                intent.putExtra("photo$index", uri.toString())
+            }
+            intent.putExtra("photoListSize", imageUriList.size)
+            startActivity(intent)
+        }
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -141,9 +152,5 @@ class ElectronicPictureFrame : AppCompatActivity() {
             .setNegativeButton("취소하기") { _, _ -> }
             .create()
             .show()
-    }
-
-    private fun initStartPhotoFrameModeButton() {
-
     }
 }
