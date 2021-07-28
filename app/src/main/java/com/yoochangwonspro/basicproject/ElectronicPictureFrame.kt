@@ -1,7 +1,9 @@
 package com.yoochangwonspro.basicproject
 
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -93,6 +95,31 @@ class ElectronicPictureFrame : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
         startActivityForResult(intent, 2000)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // 결과를 보낼 때 RESULT_OK 가 아닐경우 함수 종료
+        if (resultCode != Activity.RESULT_OK) {
+            return
+        }
+
+        when (requestCode) {
+            2000 -> {
+                val selectedImageUri: Uri? = data?.data
+
+                if (selectedImageUri != null) {
+                    selectedImageUri
+                }
+                else {
+                    Toast.makeText(this, "사진을 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else -> {
+                Toast.makeText(this, "사진을 가져오지 못했습니다", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun showPermissionContextPopup() {
