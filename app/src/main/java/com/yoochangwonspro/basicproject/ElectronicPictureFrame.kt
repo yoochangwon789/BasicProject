@@ -4,6 +4,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 
@@ -15,6 +16,17 @@ class ElectronicPictureFrame : AppCompatActivity() {
 
     private val startPhotoFrameModeButton: Button by lazy {
         findViewById(R.id.start_photo_frame_mode_btn)
+    }
+
+    private val imageViewList: List<ImageView> by lazy {
+        mutableListOf<ImageView>().apply {
+            add(findViewById(R.id.photo_image_view_one_one))
+            add(findViewById(R.id.photo_image_view_one_two))
+            add(findViewById(R.id.photo_image_view_one_three))
+            add(findViewById(R.id.photo_image_view_two_one))
+            add(findViewById(R.id.photo_image_view_two_two))
+            add(findViewById(R.id.photo_image_view_two_three))
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
