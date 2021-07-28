@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 
@@ -59,6 +60,28 @@ class ElectronicPictureFrame : AppCompatActivity() {
                         1000
                     )
                 }
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            1000 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // 권한이 부여가 되었을 경우
+                }
+                else {
+                    Toast.makeText(this, "권한을 거부하였습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else -> {
+                //
             }
         }
     }
