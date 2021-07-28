@@ -1,10 +1,12 @@
 package com.yoochangwonspro.basicproject
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class PhotoFrameActivity : AppCompatActivity() {
 
+    private val photoList = mutableListOf<Uri>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
