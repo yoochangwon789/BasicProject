@@ -28,8 +28,9 @@ class PhotoFrameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo_frame)
 
+        Log.d("PhotoFrame", "onCreate!!! timer cancel")
+
         getPhotoUriFromIntent()
-        startTimer()
     }
 
     private fun getPhotoUriFromIntent() {
@@ -43,8 +44,10 @@ class PhotoFrameActivity : AppCompatActivity() {
 
     private fun startTimer() {
         // 5초의 한 번씩 계속 실행된다
-        timer(period = 5000) {
+         timer = timer(period = 5000) {
             runOnUiThread {
+                Log.d("PhotoFrame", "5초 지나감")
+
                 val current = currentPosition
                 val next = if (photoList.size <= currentPosition + 1) 0 else currentPosition + 1
 
@@ -62,5 +65,30 @@ class PhotoFrameActivity : AppCompatActivity() {
                 currentPosition = next
             }
         }
+    }
+
+    // 라이프 사이클을 통한 타이머 종료 함수 선언
+    override fun onStop() {
+        super.onStop()
+
+        Log.d("PhotoFrame", "onStop!!! timer cancel")
+
+        timer?.cancel()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        Log.d("PhotoFrame", "onStart!!! timer cancel")
+
+        startTimer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Log.d("PhotoFrame", "onDestroy!!! timer cancel")
+
+        timer?.cancel()
     }
 }
