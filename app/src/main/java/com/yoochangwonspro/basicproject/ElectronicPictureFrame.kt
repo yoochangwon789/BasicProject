@@ -33,6 +33,8 @@ class ElectronicPictureFrame : AppCompatActivity() {
         }
     }
 
+    private val imageUriList: MutableList<Uri> = mutableListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_electronic_picture_frame)
