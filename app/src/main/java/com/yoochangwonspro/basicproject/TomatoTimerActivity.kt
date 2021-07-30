@@ -21,6 +21,8 @@ class TomatoTimerActivity : AppCompatActivity() {
         findViewById(R.id.seekBar)
     }
 
+    private var currentCountDownTimer: CountDownTimer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tomato_timer)
