@@ -37,8 +37,10 @@ class TomatoTimerActivity : AppCompatActivity() {
                 remainMinutesTextView.text = "%02d".format(progress)
             }
 
-            //
+            // 새로운 시간 선택을 위해서 조작이 일어날 때
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                currentCountDownTimer?.cancel()
+                currentCountDownTimer = null
             }
 
             // 바의 손을 때자마자 시작 되는 함수
@@ -46,7 +48,8 @@ class TomatoTimerActivity : AppCompatActivity() {
                 // 엘비스 연산자 왼쪽이 널이면 오른쪽을 return
                 seekBar ?: return
                 // 분단위 이기 때문에 60 을 곱해주고 밀리세컨드니까 1000을 또 곱해준다
-                createCountDownTimer(seekBar.progress * 60 * 1000L).start()
+                currentCountDownTimer = createCountDownTimer(seekBar.progress * 60 * 1000L).start()
+                currentCountDownTimer?.start()
             }
         })
     }
