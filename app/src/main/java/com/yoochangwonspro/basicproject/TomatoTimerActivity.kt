@@ -53,7 +53,11 @@ class TomatoTimerActivity : AppCompatActivity() {
             }
         }
 
+    @SuppressLint("SetTextI18n")
     private fun updateRemainTime(remainMillis: Long) {
+        val remainSeconds = remainMillis / 1000
 
+        remainMinutesTextView.text = "%02d".format(remainSeconds / 60)
+        remainSecondsTextView.text = "%02d".format(remainSeconds % 60)
     }
 }
