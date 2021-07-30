@@ -35,10 +35,16 @@ class TomatoTimerActivity : AppCompatActivity() {
                 remainMinutesTextView.text = "%02d".format(progress)
             }
 
+            //
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
             }
 
+            // 바의 손을 때자마자 시작 되는 함수
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // 엘비스 연산자 왼쪽이 널이면 오른쪽을 return
+                seekBar ?: return
+                // 분단위 이기 때문에 60 을 곱해주고 밀리세컨드니까 1000을 또 곱해준다
+                createCountDownTimer(seekBar.progress * 60 * 1000L).start()
             }
         })
     }
