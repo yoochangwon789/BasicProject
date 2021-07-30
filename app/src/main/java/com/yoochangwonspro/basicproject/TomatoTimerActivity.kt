@@ -46,10 +46,14 @@ class TomatoTimerActivity : AppCompatActivity() {
     private fun createCountDownTimer(initialMillis: Long) =
         object : CountDownTimer(initialMillis, 1000L) {
             override fun onTick(millisUntilFinished: Long) {
+
             }
 
             override fun onFinish() {
             }
         }
 
+    private fun updateRemainTime(remainMillis: Long) {
+
+    }
 }
