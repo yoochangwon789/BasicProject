@@ -3,6 +3,7 @@ package com.yoochangwonspro.basicproject
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.widget.SeekBar
 import android.widget.TextView
 
@@ -41,4 +42,14 @@ class TomatoTimerActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun createCountDownTimer(initialMillis: Long) =
+        object : CountDownTimer(initialMillis, 1000L) {
+            override fun onTick(millisUntilFinished: Long) {
+            }
+
+            override fun onFinish() {
+            }
+        }
+
 }
