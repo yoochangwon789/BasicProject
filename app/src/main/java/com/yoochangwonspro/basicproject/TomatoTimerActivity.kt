@@ -32,9 +32,17 @@ class TomatoTimerActivity : AppCompatActivity() {
 
     private fun bindView() {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                remainMinutesTextView.text = "%02d".format(progress)
+                // progress 호출로 인해서 onProgressChanged 호출된다
+                // 그러면서 updateRemainTime 함수가 호출이 된다
+                // 함수가 호출이 되면서 사용자 입장에서가 아닌 코드적 부분에서 초가 수지적 으로 바뀌는데
+                // 사용자 입장에서 분을 바꾸게 되면 또 다운 카운트가 시작된다
+                // 그래서 안드로이드가 코드적 부분과 사용자 부분에서 구분이 안되기 때문
+                // 그러므로 onProgressChanged 함수에서 fromUser 을 활용해 조건을 처리한다
+                // 무조건 사용자의 이벤트 에서만 이 함수를 실행 시키겠다
+                if (fromUser) {
+                    updateRemainTime(progress * 60 * 1000L)
+                }
             }
 
             // 새로운 시간 선택을 위해서 조작이 일어날 때
@@ -78,6 +86,12 @@ class TomatoTimerActivity : AppCompatActivity() {
 
     // 1분 마다 sickBar 한칸 씩 줄어드는 변화
     private fun updateSickBar(remainMillis: Long) {
+        // progress 호출로 인해서 onProgressChanged 호출된다
+        // 그러면서 updateRemainTime 함수가 호출이 된다
+        // 함수가 호출이 되면서 사용자 입장에서가 아닌 코드적 부분에서 초가 수지적 으로 바뀌는데
+        // 사용자 입장에서 분을 바꾸게 되면 또 다운 카운트가 시작된다
+        // 그래서 안드로이드가 코드적 부분과 사용자 부분에서 구분이 안되기 때문
+        // 그러므로 onProgressChanged 함수에서 fromUser 을 활용해 조건을 처리한다
         seekBar.progress = (remainMillis / 1000 / 60).toInt()
     }
 }
