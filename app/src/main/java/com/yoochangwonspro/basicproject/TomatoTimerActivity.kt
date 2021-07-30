@@ -46,10 +46,14 @@ class TomatoTimerActivity : AppCompatActivity() {
     private fun createCountDownTimer(initialMillis: Long) =
         object : CountDownTimer(initialMillis, 1000L) {
             override fun onTick(millisUntilFinished: Long) {
-
+                // 1초마다 한번씩 갱신된다
+                updateRemainTime(millisUntilFinished)
+                updateSickBar(millisUntilFinished)
             }
 
             override fun onFinish() {
+                updateRemainTime(0)
+                updateSickBar(0)
             }
         }
 
@@ -59,5 +63,10 @@ class TomatoTimerActivity : AppCompatActivity() {
 
         remainMinutesTextView.text = "%02d".format(remainSeconds / 60)
         remainSecondsTextView.text = "%02d".format(remainSeconds % 60)
+    }
+
+    // 1분 마다 sickBar 한칸 씩 줄어드는 변화
+    private fun updateSickBar(remainMillis: Long) {
+        seekBar.progress = (remainMillis / 1000 / 60).toInt()
     }
 }
