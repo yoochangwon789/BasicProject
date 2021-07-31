@@ -77,7 +77,12 @@ class TomatoTimerActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 // 엘비스 연산자 왼쪽이 널이면 오른쪽을 return
                 seekBar ?: return
-                startCountDown()
+                if (seekBar.progress == 0) {
+
+                } else {
+                    startCountDown()
+                }
+
             }
         })
     }
@@ -108,6 +113,11 @@ class TomatoTimerActivity : AppCompatActivity() {
         tickingSoundId?.let { soundId ->
             soundPool.play(soundId, 1F, 1F, 0, -1, 1F)
         }
+    }
+
+    private fun stopCountDown() {
+        currentCountDownTimer?.cancel()
+        currentCountDownTimer = null
     }
 
     private fun completeCountDown() {
