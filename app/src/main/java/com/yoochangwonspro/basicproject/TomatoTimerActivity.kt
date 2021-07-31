@@ -1,6 +1,7 @@
 package com.yoochangwonspro.basicproject
 
 import android.annotation.SuppressLint
+import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -20,6 +21,8 @@ class TomatoTimerActivity : AppCompatActivity() {
     private val seekBar: SeekBar by lazy {
         findViewById(R.id.seekBar)
     }
+
+    private val soundPool = SoundPool.Builder().build()
 
     private var currentCountDownTimer: CountDownTimer? = null
 
