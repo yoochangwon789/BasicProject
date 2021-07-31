@@ -62,6 +62,10 @@ class TomatoTimerActivity : AppCompatActivity() {
         })
     }
 
+    private fun initSounds() {
+
+    }
+
     private fun createCountDownTimer(initialMillis: Long) =
         object : CountDownTimer(initialMillis, 1000L) {
             override fun onTick(millisUntilFinished: Long) {
