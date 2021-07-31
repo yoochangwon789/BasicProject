@@ -96,15 +96,19 @@ class TomatoTimerActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                updateRemainTime(0)
-                updateSickBar(0)
-
-                soundPool.autoPause()
-                bellSoundId?.let { soundId ->
-                    soundPool.play(soundId, 1F, 1F, 0, -1, 1F)
-                }
+                completeCountDown()
             }
         }
+
+    private fun completeCountDown() {
+        updateRemainTime(0)
+        updateSickBar(0)
+
+        soundPool.autoPause()
+        bellSoundId?.let { soundId ->
+            soundPool.play(soundId, 1F, 1F, 0, -1, 1F)
+        }
+    }
 
     @SuppressLint("SetTextI18n")
     private fun updateRemainTime(remainMillis: Long) {
