@@ -36,6 +36,16 @@ class TomatoTimerActivity : AppCompatActivity() {
         initSounds()
     }
 
+    override fun onResume() {
+        super.onResume()
+        soundPool.autoResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        soundPool.autoPause()
+    }
+
     private fun bindView() {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -88,6 +98,11 @@ class TomatoTimerActivity : AppCompatActivity() {
             override fun onFinish() {
                 updateRemainTime(0)
                 updateSickBar(0)
+
+                soundPool.autoPause()
+                bellSoundId?.let { soundId ->
+                    soundPool.play(soundId, 1F, 1F, 0, -1, 1F)
+                }
             }
         }
 
