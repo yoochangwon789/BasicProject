@@ -23,6 +23,8 @@ class TomatoTimerActivity : AppCompatActivity() {
     }
 
     private val soundPool = SoundPool.Builder().build()
+    private var tickingSoundId: Int? = null
+    private var bellSoundId: Int? = null
 
     private var currentCountDownTimer: CountDownTimer? = null
 
@@ -66,7 +68,8 @@ class TomatoTimerActivity : AppCompatActivity() {
     }
 
     private fun initSounds() {
-
+        tickingSoundId = soundPool.load(this, R.raw.timer_ticking, 1)
+        bellSoundId = soundPool.load(this, R.raw.timer_bell, 1)
     }
 
     private fun createCountDownTimer(initialMillis: Long) =
