@@ -69,20 +69,19 @@ class TomatoTimerActivity : AppCompatActivity() {
 
             // 새로운 시간 선택을 위해서 조작이 일어날 때
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                currentCountDownTimer?.cancel()
-                currentCountDownTimer = null
+                stopCountDown()
             }
 
             // 바의 손을 때자마자 시작 되는 함수
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 // 엘비스 연산자 왼쪽이 널이면 오른쪽을 return
                 seekBar ?: return
-                if (seekBar.progress == 0) {
 
+                if (seekBar.progress == 0) {
+                    stopCountDown()
                 } else {
                     startCountDown()
                 }
-
             }
         })
     }
@@ -118,6 +117,7 @@ class TomatoTimerActivity : AppCompatActivity() {
     private fun stopCountDown() {
         currentCountDownTimer?.cancel()
         currentCountDownTimer = null
+        soundPool.autoPause()
     }
 
     private fun completeCountDown() {
