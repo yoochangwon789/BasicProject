@@ -33,6 +33,7 @@ class TomatoTimerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_tomato_timer)
 
         bindView()
+        initSounds()
     }
 
     private fun bindView() {
@@ -63,6 +64,10 @@ class TomatoTimerActivity : AppCompatActivity() {
                 // 분단위 이기 때문에 60 을 곱해주고 밀리세컨드니까 1000을 또 곱해준다
                 currentCountDownTimer = createCountDownTimer(seekBar.progress * 60 * 1000L).start()
                 currentCountDownTimer?.start()
+
+                tickingSoundId?.let { soundId ->
+                    soundPool.play(soundId, 1F, 1F, 0, -1, 1F)
+                }
             }
         })
     }
