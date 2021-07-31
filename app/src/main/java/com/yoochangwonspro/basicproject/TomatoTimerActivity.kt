@@ -46,6 +46,12 @@ class TomatoTimerActivity : AppCompatActivity() {
         soundPool.autoPause()
     }
 
+    // 사운드 풀의 기존의 load 됐던 파일을 해제 시키는 라이프 싸이클
+    override fun onDestroy() {
+        super.onDestroy()
+        soundPool.release()
+    }
+
     private fun bindView() {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -71,13 +77,7 @@ class TomatoTimerActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 // 엘비스 연산자 왼쪽이 널이면 오른쪽을 return
                 seekBar ?: return
-                // 분단위 이기 때문에 60 을 곱해주고 밀리세컨드니까 1000을 또 곱해준다
-                currentCountDownTimer = createCountDownTimer(seekBar.progress * 60 * 1000L).start()
-                currentCountDownTimer?.start()
-
-                tickingSoundId?.let { soundId ->
-                    soundPool.play(soundId, 1F, 1F, 0, -1, 1F)
-                }
+                startCountDown()
             }
         })
     }
@@ -99,6 +99,16 @@ class TomatoTimerActivity : AppCompatActivity() {
                 completeCountDown()
             }
         }
+
+    private fun startCountDown() {
+        // 분단위 이기 때문에 60 을 곱해주고 밀리세컨드니까 1000을 또 곱해준다
+        currentCountDownTimer = createCountDownTimer(seekBar.progress * 60 * 1000L).start()
+        currentCountDownTimer?.start()
+
+        tickingSoundId?.let { soundId ->
+            soundPool.play(soundId, 1F, 1F, 0, -1, 1F)
+        }
+    }
 
     private fun completeCountDown() {
         updateRemainTime(0)
