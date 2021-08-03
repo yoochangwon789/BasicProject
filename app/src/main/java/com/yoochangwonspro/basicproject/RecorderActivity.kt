@@ -16,5 +16,7 @@ class RecorderActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recorder)
     }
 
+    fun initView() {
 
+    }
 }
