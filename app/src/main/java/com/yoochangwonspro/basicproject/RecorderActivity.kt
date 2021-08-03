@@ -1,5 +1,6 @@
 package com.yoochangwonspro.basicproject
 
+import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -8,6 +9,8 @@ class RecorderActivity : AppCompatActivity() {
     private val recodeButton: RecodeButton by lazy {
         findViewById(R.id.recorde_btn)
     }
+
+    private val requiredPermissions = arrayOf(Manifest.permission.RECORD_AUDIO)
 
     private var state = State.BEFORE_RECORDING
 
