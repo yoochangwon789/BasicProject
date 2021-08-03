@@ -11,8 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BasicProject">
-        <activity android:name=".TomatoTimerActivity"
-            android:theme="@style/Theme.BasicProject.NoActionBar">
+        <activity android:name=".RecorderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,11 +19,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PhotoFrameActivity"
-            android:screenOrientation="landscape" />
-        <activity android:name=".ElectronicPictureFrame">
+            android:name=".TomatoTimerActivity"
+            android:theme="@style/Theme.BasicProject.NoActionBar">
 
         </activity>
+        <activity
+            android:name=".PhotoFrameActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".ElectronicPictureFrame"></activity>
         <activity android:name=".CalculatorActivity" />
         <activity
             android:name=".DiaryActivity"
