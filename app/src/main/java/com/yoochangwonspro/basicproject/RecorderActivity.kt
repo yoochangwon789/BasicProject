@@ -1,6 +1,7 @@
 package com.yoochangwonspro.basicproject
 
 import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -27,11 +28,19 @@ class RecorderActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
+        // firstOrNull 첫번째 값이 비었으면 null 아니면 첫번째 값 return
+        val audioRecordPermissionGranted =
+            requestCode == REQUEST_RECORD_AUDIO_PERMISSION &&
+                    grantResults.firstOrNull() == PackageManager.PERMISSION_GRANTED
 
+        // 권한 부여가 되어있지 않는 경우 앱 종료
+        if (!audioRecordPermissionGranted) {
+            finish()
+        }
     }
 
     private fun requestAudioPermission() {
