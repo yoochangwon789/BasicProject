@@ -22,6 +22,10 @@ class RecorderActivity : AppCompatActivity() {
     }
 
     private var state = State.BEFORE_RECORDING
+        set(value) {
+            field = value
+            recodeButton.updateIconWithState(value)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
