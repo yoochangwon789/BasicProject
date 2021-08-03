@@ -35,6 +35,7 @@ class RecorderActivity : AppCompatActivity() {
         requestAudioPermission()
 
         initViews()
+        bindViews()
     }
 
     override fun onRequestPermissionsResult(
@@ -61,6 +62,25 @@ class RecorderActivity : AppCompatActivity() {
 
     private fun initViews() {
         recodeButton.updateIconWithState(state)
+    }
+
+    private fun bindViews() {
+        recodeButton.setOnClickListener {
+            when (state) {
+                State.BEFORE_RECORDING -> {
+                    startRecording()
+                }
+                State.ON_RECORDING -> {
+                    stopRecording()
+                }
+                State.AFTER_RECORDING -> {
+                    startPlaying()
+                }
+                State.ON_PLAYING -> {
+                    stopPlaying()
+                }
+            }
+        }
     }
 
     private fun startRecording() {
