@@ -68,6 +68,7 @@ class RecorderActivity : AppCompatActivity() {
             prepare()
         }
         recorder?.start()
+        state = State.ON_RECORDING
     }
 
     private fun stopRecording() {
@@ -76,6 +77,7 @@ class RecorderActivity : AppCompatActivity() {
             release()
         }
         recorder = null
+        state = State.AFTER_RECORDING
     }
 
     private fun startPlaying() {
@@ -84,11 +86,13 @@ class RecorderActivity : AppCompatActivity() {
             prepare()
         }
         player?.start()
+        state = State.ON_PLAYING
     }
 
     private fun stopPlaying() {
         player?.release()
         player = null
+        state = State.AFTER_RECORDING
     }
 
     companion object {
