@@ -15,7 +15,13 @@ class RecorderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recorder)
 
+        // 권한 요청
+
         initViews()
+    }
+
+    private fun requestAudioPermission() {
+        requestPermissions()
     }
 
     private fun initViews() {
