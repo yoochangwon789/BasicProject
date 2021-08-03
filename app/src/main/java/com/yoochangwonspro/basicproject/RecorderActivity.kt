@@ -2,6 +2,7 @@ package com.yoochangwonspro.basicproject
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.media.MediaRecorder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -12,6 +13,8 @@ class RecorderActivity : AppCompatActivity() {
     }
 
     private val requiredPermissions = arrayOf(Manifest.permission.RECORD_AUDIO)
+
+    private var recorder: MediaRecorder? = null
 
     private var state = State.BEFORE_RECORDING
 
