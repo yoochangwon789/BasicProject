@@ -15,6 +15,9 @@ class RecorderActivity : AppCompatActivity() {
     private val requiredPermissions = arrayOf(Manifest.permission.RECORD_AUDIO)
 
     private var recorder: MediaRecorder? = null
+    private val recordingFilePath: String by lazy {
+        "${externalCacheDir?.absolutePath}/recording.3gp"
+    }
 
     private var state = State.BEFORE_RECORDING
 
@@ -52,6 +55,17 @@ class RecorderActivity : AppCompatActivity() {
 
     private fun initViews() {
         recodeButton.updateIconWithState(state)
+    }
+
+    private fun startRecording() {
+        recorder = MediaRecorder().apply {
+            setAudioSource(MediaRecorder.AudioSource.MIC)
+            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
+            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+            setOutputFile(recordingFilePath)
+            prepare()
+        }
+        recorder?.start()
     }
 
     companion object {
