@@ -19,12 +19,23 @@ class RecorderActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recorder)
 
         // 권한 요청
+        requestAudioPermission()
 
         initViews()
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+
+    }
+
     private fun requestAudioPermission() {
-        requestPermissions()
+        requestPermissions(requiredPermissions, REQUEST_RECORD_AUDIO_PERMISSION)
     }
 
     private fun initViews() {
