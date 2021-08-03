@@ -2,6 +2,7 @@ package com.yoochangwonspro.basicproject
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.media.MediaRecorder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,6 +16,7 @@ class RecorderActivity : AppCompatActivity() {
     private val requiredPermissions = arrayOf(Manifest.permission.RECORD_AUDIO)
 
     private var recorder: MediaRecorder? = null
+    private var player: MediaPlayer? = null
     private val recordingFilePath: String by lazy {
         "${externalCacheDir?.absolutePath}/recording.3gp"
     }
@@ -74,6 +76,14 @@ class RecorderActivity : AppCompatActivity() {
             release()
         }
         recorder = null
+    }
+
+    private fun startPlaying() {
+        player = MediaPlayer().apply {
+            setDataSource(recordingFilePath)
+            prepare()
+        }
+        player?.start()
     }
 
     companion object {
