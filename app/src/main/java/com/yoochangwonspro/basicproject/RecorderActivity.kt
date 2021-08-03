@@ -30,4 +30,8 @@ class RecorderActivity : AppCompatActivity() {
     private fun initViews() {
         recodeButton.updateIconWithState(state)
     }
+
+    companion object {
+        private const val REQUEST_RECORD_AUDIO_PERMISSION = 201
+    }
 }
