@@ -46,6 +46,7 @@ class RecorderActivity : AppCompatActivity() {
 
         initViews()
         bindViews()
+        initVariables()
     }
 
     override fun onRequestPermissionsResult(
@@ -99,6 +100,10 @@ class RecorderActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun initVariables() {
+        state = State.BEFORE_RECORDING
     }
 
     private fun startRecording() {
