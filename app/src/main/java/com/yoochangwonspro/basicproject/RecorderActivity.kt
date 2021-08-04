@@ -29,6 +29,11 @@ class RecorderActivity : AppCompatActivity() {
     private var state = State.BEFORE_RECORDING
         set(value) {
             field = value
+            // isEnabled 는 true, false 값으로 버튼의 클릭 가능 여부를 판단한다
+            // AFTER_RECORDING 녹음이 끝났을 때
+            // ON_PLAYING 녹음을 끝내고 재생했을 때
+            // 클릭이 가능하도록 구현
+            resetButton.isEnabled = (value == State.AFTER_RECORDING) || (value == State.ON_PLAYING)
             recodeButton.updateIconWithState(value)
         }
 
@@ -70,6 +75,8 @@ class RecorderActivity : AppCompatActivity() {
     }
 
     private fun bindViews() {
+        // 녹음이 끝났을 때
+        // 끝난 녹음을 재생할 때 reset 이 가능하도록 구현
         resetButton.setOnClickListener {
             state = State.BEFORE_RECORDING
             // 재생 중일 때도 reset 버튼을 클릭할 수 있다
