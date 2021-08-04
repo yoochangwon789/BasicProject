@@ -6,8 +6,13 @@ import android.media.MediaPlayer
 import android.media.MediaRecorder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 
 class RecorderActivity : AppCompatActivity() {
+
+    private val resetButton: Button by lazy {
+        findViewById(R.id.recorde_reset_btn)
+    }
 
     private val recodeButton: RecodeButton by lazy {
         findViewById(R.id.recorde_btn)
