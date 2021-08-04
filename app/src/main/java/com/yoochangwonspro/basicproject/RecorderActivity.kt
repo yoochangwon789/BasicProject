@@ -70,6 +70,12 @@ class RecorderActivity : AppCompatActivity() {
     }
 
     private fun bindViews() {
+        resetButton.setOnClickListener {
+            state = State.BEFORE_RECORDING
+            // 재생 중일 때도 reset 버튼을 클릭할 수 있다
+            stopPlaying()
+        }
+
         recodeButton.setOnClickListener {
             when (state) {
                 State.BEFORE_RECORDING -> {
