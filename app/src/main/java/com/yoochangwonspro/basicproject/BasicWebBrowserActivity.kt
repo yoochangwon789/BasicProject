@@ -77,5 +77,13 @@ class BasicWebBrowserActivity : AppCompatActivity() {
 
             return@setOnEditorActionListener false
         }
+
+        goBackButton.setOnClickListener {
+            webView.goBack()
+        }
+
+        goForwardButton.setOnClickListener {
+            webView.goForward()
+        }
     }
 }
