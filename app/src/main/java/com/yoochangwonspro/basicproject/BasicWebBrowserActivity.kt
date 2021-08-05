@@ -64,11 +64,15 @@ class BasicWebBrowserActivity : AppCompatActivity() {
         webView.apply {
             webViewClient = WebViewClient()
             settings.javaScriptEnabled = true
-            loadUrl("http://www.google.com")
+            loadUrl(DEFAULT_URL)
         }
     }
 
     private fun bindViews() {
+        goHomeButton.setOnClickListener {
+            webView.loadUrl(DEFAULT_URL)
+        }
+
         // action 이 수행되었을 때 이벤트가 발생한다.
         // 파라미터로는 3개
         // v -> action 이 발생한 뷰
@@ -97,5 +101,9 @@ class BasicWebBrowserActivity : AppCompatActivity() {
         goForwardButton.setOnClickListener {
             webView.goForward()
         }
+    }
+
+    companion object {
+        private const val DEFAULT_URL = "http://www.google.com"
     }
 }
