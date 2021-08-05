@@ -13,5 +13,11 @@ class BasicWebBrowserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basie_web_browser)
+
+        initViews()
+    }
+
+    private fun initViews() {
+        webView.loadUrl("http://www.google.com")
     }
 }
