@@ -5,8 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.EditText
 
 class BasicWebBrowserActivity : AppCompatActivity() {
+
+    private val addressBar: EditText by lazy {
+        findViewById(R.id.web_address_edit_text)
+    }
 
     private val webView: WebView by lazy {
         findViewById(R.id.web_view)
