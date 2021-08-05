@@ -36,9 +36,11 @@ class BasicWebBrowserActivity : AppCompatActivity() {
         // 그런데 어떤 아이콘을 클릭했을 때 이슈가 일어나지 않는 경우가 있다.
         // 이것은 웹이 자바스크립트로 구현이 되어 있는데 안드로이드 에서는 자바스크립트 언어의 부분을 보안상 사용하지 못하도록
         // 하고 있어서 자바스크립트를 사용하겠다고 따로 처리해 줘야한다
-        webView.webViewClient = WebViewClient()
-        webView.settings.javaScriptEnabled = true
-        webView.loadUrl("http://www.google.com")
+        webView.apply {
+            webViewClient = WebViewClient()
+            settings.javaScriptEnabled = true
+            loadUrl("http://www.google.com")
+        }
     }
 
     private fun bindViews() {
