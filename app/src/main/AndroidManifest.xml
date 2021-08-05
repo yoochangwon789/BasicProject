@@ -12,22 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BasicProject">
-        <activity android:name=".RecorderActivity">
+        <activity android:name=".BasicWebBrowserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".TomatoTimerActivity"
-            android:theme="@style/Theme.BasicProject.NoActionBar">
+        <activity android:name=".RecorderActivity">
 
         </activity>
         <activity
+            android:name=".TomatoTimerActivity"
+            android:theme="@style/Theme.BasicProject.NoActionBar"></activity>
+        <activity
             android:name=".PhotoFrameActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".ElectronicPictureFrame"></activity>
+        <activity android:name=".ElectronicPictureFrame" />
         <activity android:name=".CalculatorActivity" />
         <activity
             android:name=".DiaryActivity"
