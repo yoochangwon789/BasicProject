@@ -7,8 +7,21 @@ import android.view.inputmethod.EditorInfo
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.EditText
+import android.widget.ImageButton
 
 class BasicWebBrowserActivity : AppCompatActivity() {
+
+    private val goHomeButton: ImageButton by lazy {
+        findViewById(R.id.web_home_button)
+    }
+
+    private val goBackButton: ImageButton by lazy {
+        findViewById(R.id.web_go_back_button)
+    }
+
+    private val goForwardButton: ImageButton by lazy {
+        findViewById(R.id.web_go_forward_button)
+    }
 
     private val addressBar: EditText by lazy {
         findViewById(R.id.web_address_edit_text)
