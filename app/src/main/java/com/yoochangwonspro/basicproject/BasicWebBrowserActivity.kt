@@ -31,6 +31,18 @@ class BasicWebBrowserActivity : AppCompatActivity() {
         findViewById(R.id.web_view)
     }
 
+    // 안드로이드에서 back 버튼을 눌렀을 때 호출되는 함수
+    override fun onBackPressed() {
+        // webView 에서 지원하는 canGoBack 를 이용해서 뒤로갈 수 있는지 판단하는 메서드
+        if (webView.canGoBack()) {
+            // history 에 뒤로갈 페이지가 있다면 실행
+            webView.goBack()
+        }else {
+            // history 에 뒤로갈 페이지가 없다면 앱 종료
+            super.onBackPressed()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basie_web_browser)
