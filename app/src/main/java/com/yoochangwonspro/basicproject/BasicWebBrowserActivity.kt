@@ -142,7 +142,9 @@ class BasicWebBrowserActivity : AppCompatActivity() {
             progressBar.hide()
 
             // 웹페이지가 뒤로갈 수 있을 때 버튼이 눌리게 되고 그렇지 않으면 버튼이 눌러지지 않는다
+            // 앞으로 가는 버튼도 마찬가지
             goBackButton.isEnabled = webView.canGoBack()
+            goForwardButton.isEnabled = webView.canGoForward()
         }
     }
 
