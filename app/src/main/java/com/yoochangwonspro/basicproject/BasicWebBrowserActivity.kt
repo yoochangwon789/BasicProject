@@ -113,6 +113,17 @@ class BasicWebBrowserActivity : AppCompatActivity() {
         }
     }
 
+    // isRefresh 을 false 값으로 바꿔줘야 로딩되는 아이콘이 사라진다
+    // 페이지가 로딩된 다음에 없어지는게 좋으니까 WebViewClient 상속받아 load Finish 를 받아서 false 로 전달한다
+    // inner 클래스로 선언해 상위에 있는 클래스의 property 를 접근할 수 있게 한다
+    inner class WebViewClient: android.webkit.WebViewClient() {
+        // 페이지 로딩이 끝났을 때
+        override fun onPageFinished(view: WebView?, url: String?) {
+            super.onPageFinished(view, url)
+            refreshLayout.isRefreshing = false
+        }
+    }
+
     companion object {
         private const val DEFAULT_URL = "http://www.google.com"
     }
