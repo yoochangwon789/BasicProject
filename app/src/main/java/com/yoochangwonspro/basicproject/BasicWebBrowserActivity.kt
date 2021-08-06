@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.EditText
@@ -38,7 +39,7 @@ class BasicWebBrowserActivity : AppCompatActivity() {
     }
 
     private val progressBar: ContentLoadingProgressBar by lazy {
-        findViewById(R.id.web_progress_var)
+        findViewById(R.id.web_progress_bar)
     }
 
     // 안드로이드에서 back 버튼을 눌렀을 때 호출되는 함수
@@ -126,6 +127,14 @@ class BasicWebBrowserActivity : AppCompatActivity() {
         override fun onPageFinished(view: WebView?, url: String?) {
             super.onPageFinished(view, url)
             refreshLayout.isRefreshing = false
+        }
+    }
+
+    inner class WebChromeClient: android.webkit.WebChromeClient() {
+        override fun onProgressChanged(view: WebView?, newProgress: Int) {
+            super.onProgressChanged(view, newProgress)
+
+            progressBar.progress = newProgress
         }
     }
 
