@@ -146,6 +146,8 @@ class BasicWebBrowserActivity : AppCompatActivity() {
             goBackButton.isEnabled = webView.canGoBack()
             goForwardButton.isEnabled = webView.canGoForward()
 
+            // 실질적인 url 을 editText 에 띄운다
+            // 사용자가 검색한 주소와 실직적인 주소가 다를 수 있기 때문
             addressBar.setText(url)
         }
     }
