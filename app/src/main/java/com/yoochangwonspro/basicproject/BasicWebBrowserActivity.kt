@@ -8,6 +8,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 class BasicWebBrowserActivity : AppCompatActivity() {
 
@@ -29,6 +30,10 @@ class BasicWebBrowserActivity : AppCompatActivity() {
 
     private val webView: WebView by lazy {
         findViewById(R.id.web_view)
+    }
+
+    private val refreshLayout: SwipeRefreshLayout by lazy {
+        findViewById(R.id.refresh_layout)
     }
 
     // 안드로이드에서 back 버튼을 눌렀을 때 호출되는 함수
