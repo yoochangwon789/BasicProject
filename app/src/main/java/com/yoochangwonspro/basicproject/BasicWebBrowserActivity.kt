@@ -1,6 +1,7 @@
 package com.yoochangwonspro.basicproject
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
@@ -74,6 +75,7 @@ class BasicWebBrowserActivity : AppCompatActivity() {
         // 하고 있어서 자바스크립트를 사용하겠다고 따로 처리해 줘야한다
         webView.apply {
             webViewClient = WebViewClient()
+            webChromeClient = WebChromeClient()
             settings.javaScriptEnabled = true
             loadUrl(DEFAULT_URL)
         }
@@ -123,10 +125,24 @@ class BasicWebBrowserActivity : AppCompatActivity() {
     // 페이지가 로딩된 다음에 없어지는게 좋으니까 WebViewClient 상속받아 load Finish 를 받아서 false 로 전달한다
     // inner 클래스로 선언해 상위에 있는 클래스의 property 를 접근할 수 있게 한다
     inner class WebViewClient: android.webkit.WebViewClient() {
+
+        // 페이지가 시작되었을 때 바를 보여준다
+        override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+            super.onPageStarted(view, url, favicon)
+
+            progressBar.show()
+        }
+
         // 페이지 로딩이 끝났을 때
+        // 리프레쉬 로딩 아이콘을 사라지게하고 프로그레스 바를 사라지게 한다
         override fun onPageFinished(view: WebView?, url: String?) {
             super.onPageFinished(view, url)
+
             refreshLayout.isRefreshing = false
+            progressBar.hide()
+
+            // 웹페이지가 뒤로갈 수 있을 때 버튼이 눌리게 되고 그렇지 않으면 버튼이 눌러지지 않는다
+            goBackButton.isEnabled = webView.canGoBack()
         }
     }
 
