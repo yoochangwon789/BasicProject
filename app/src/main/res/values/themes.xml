@@ -16,6 +16,8 @@
     </style>
 
     <style name="Theme.BasicProject.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@color/pomodoro_red</item>
+<!--        <item name="android:windowBackground">@color/pomodoro_red</item>-->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/status_bar</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>
