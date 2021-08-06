@@ -82,12 +82,12 @@ class BasicWebBrowserActivity : AppCompatActivity() {
         // 파라미터로는 3개
         // v -> action 이 발생한 뷰
         // actionId -> 어떤 id 에서 액션이 발생했는지 알려주는데 imeOptions 을 actionDone 으로 설정했기 때문에
-            // 우측하단에 Done 버튼을 클릭시에 이 이벤트가 발생하면서 이 id 에서는
-            // actionDone 의 id 가 날라오게 될 것이다
+        // 우측하단에 Done 버튼을 클릭시에 이 이벤트가 발생하면서 이 id 에서는
+        // actionDone 의 id 가 날라오게 될 것이다
         // event -> 사용자가 눌렀는지 떼었는지 발생하는 event 를 확인하는 파라미터
         // 이 모든 action 과 event 가 발생했을 때 return 값을 줘야하는데
-            // true 를 주게 되면 내가 이곳에서 이벤트들을 처리했으니 다른곳에서 핸들링 하지 않아도 된다는 의미
-            // false 를 주게 되면 나는 이것을 소비하지 않았으니까 다른 곳에서도 action 을 소비해야한다는 의미
+        // true 를 주게 되면 내가 이곳에서 이벤트들을 처리했으니 다른곳에서 핸들링 하지 않아도 된다는 의미
+        // false 를 주게 되면 나는 이것을 소비하지 않았으니까 다른 곳에서도 action 을 소비해야한다는 의미
         // 만약 Done 버튼을 누르게 되면 이 action 을 소비하고 닫는 것이기 때문에 만약 true 를 반환하게 되면
         // 키보드는 닫히고 false 를 return 하면 키보드는 닫히게 된다
         addressBar.setOnEditorActionListener { v, actionId, event ->
@@ -105,6 +105,11 @@ class BasicWebBrowserActivity : AppCompatActivity() {
 
         goForwardButton.setOnClickListener {
             webView.goForward()
+        }
+
+        // 웹 뷰를 당겼을 때 리프레쉬가 일어나는 함수 부분
+        refreshLayout.setOnRefreshListener {
+            webView.reload()
         }
     }
 
