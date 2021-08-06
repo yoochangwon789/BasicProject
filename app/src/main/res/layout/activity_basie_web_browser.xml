@@ -38,6 +38,7 @@
             android:inputType="textUri"
             android:paddingHorizontal="16dp"
             android:textSize="14sp"
+            android:selectAllOnFocus="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/web_home_button"
             app:layout_constraintRight_toLeftOf="@id/web_go_back_button"
