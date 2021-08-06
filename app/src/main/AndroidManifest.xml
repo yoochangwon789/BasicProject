@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.BasicProject">
-        <activity android:name=".BasicWebBrowserActivity">
+        <activity android:name=".BasicWebBrowserActivity"
+            android:theme="@style/Theme.BasicProject.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
