@@ -145,6 +145,8 @@ class BasicWebBrowserActivity : AppCompatActivity() {
             // 앞으로 가는 버튼도 마찬가지
             goBackButton.isEnabled = webView.canGoBack()
             goForwardButton.isEnabled = webView.canGoForward()
+
+            addressBar.setText(url)
         }
     }
 
