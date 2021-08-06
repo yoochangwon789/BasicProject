@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import android.webkit.URLUtil
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -100,8 +101,14 @@ class BasicWebBrowserActivity : AppCompatActivity() {
         // 키보드는 닫히고 false 를 return 하면 키보드는 닫히게 된다
         addressBar.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                // 주소를 입력하고 DONE 버튼을 눌렀을 경우
-                webView.loadUrl(v.text.toString())
+                val loadingUrl = v.text.toString()
+                // isNetworkUrl 주소의 앞의 http, https 가 붙을 경우는 true 아닌 경우 false
+                if (URLUtil.isNetworkUrl(loadingUrl)) {
+                    // 주소를 입력하고 DONE 버튼을 눌렀을 경우
+                    webView.loadUrl(v.text.toString())
+                } else {
+                    webView.loadUrl("http://$loadingUrl")
+                }
             }
 
             return@setOnEditorActionListener false
