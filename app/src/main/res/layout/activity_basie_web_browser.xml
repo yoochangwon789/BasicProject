@@ -87,7 +87,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/web_progress_var"
+        android:id="@+id/web_progress_bar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="0dp"
         android:layout_height="2dp"
